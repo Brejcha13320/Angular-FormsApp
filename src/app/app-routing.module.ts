@@ -4,20 +4,21 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'reactive',
-    loadChildren: () => import('./reactive/reactive.module').then(m => m.ReactiveModule)
+    loadChildren: () =>
+      import('./reactive/reactive.module').then((m) => m.ReactiveModule),
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '**',
-    redirectTo: 'reactive'
-  }
+    redirectTo: 'reactive',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
